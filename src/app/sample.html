@@ -1,0 +1,102 @@
+<main class="customer-page">
+    <section class="customer-card">
+        <h1>{{ title }}</h1>
+        <p [ngClass]="isActive ? 'active' : 'inactive'">
+            Welcome to Angular 22
+
+        </p>
+
+        <form class="user-form" (ngSubmit)="submitForm()">
+            <div class="customer-row">
+                <label class="label required">Name</label>
+                <input id="name" name="name" type="text" maxlength="30" [(ngModel)]="customer.name" appcapitalize
+                    appHighlight apptextboxcolor="#fffbeb" (input)="onNameInput($event)" pattern="[a-zA-Z\s]*"
+                    maxlength="30" placeholder="" required
+                    title="Name should only contain letters and spaces (max 30 characters)" />
+            </div>
+
+            <div class="customer-row">
+                <label class="label required">Phone Number</label>
+                <input id="phone" name="phone" type="tel" [(ngModel)]="customer.phone" appHighlight
+                    apptextboxcolor="#eff6ff" (input)="onPhoneInput($event)" pattern="\d{10}" maxlength="10"
+                    placeholder="Enter 10-digit phone" required title="Phone number must be 10 digits" />
+            </div>
+
+            <div class="customer-row">
+                <label class="label required">Email</label>
+                <input id="email" name="email" type="email" [(ngModel)]="customer.email" apptextboxcolor="#e0f2fe"
+                    placeholder="Enter a valid email" required title="Please enter a valid email address"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
+            </div>
+
+            <div class="customer-row">
+                <label class="label required">Date</label>
+                <input id="date" name="date" type="date" [(ngModel)]="customer.date" apptextboxcolor="#f0fdf4"
+                    required />
+            </div>
+
+            <div class="customer-row">
+                <label class="label required">State</label>
+                <select id="state" name="state" [(ngModel)]="customer.state" apptextboxcolor="#f5f3ff" required>
+                    <option value="">-- Select state --</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="customer-row address-row">
+                <label class="label">Address</label>
+                <textarea id="address" name="address" [(ngModel)]="customer.address" apptextboxcolor="#ffecb5"
+                    (input)="onAddressInput($event)" maxlength="60" placeholder=""></textarea>
+            </div>
+
+            <div class="actions">
+                <button type="submit">Submit</button>
+                <button type="button" (click)="resetForm()" class="reset-btn">Reset</button>
+            </div>
+        </form>
+
+        @if (submittedData) {
+        <div class="submitted-card">
+            <h2>Submitted Data</h2>
+            <p><strong>Name:</strong> {{ submittedData?.name | uppercase | greeting }}</p>
+            <p><strong>Phone:</strong> {{ submittedData?.phone | uppercase | greeting }}</p>
+            <p><strong>Email:</strong> {{ submittedData?.email | uppercase | greeting }}</p>
+            <p><strong>State:</strong> {{ submittedData?.state | uppercase | greeting }}</p>
+            <p><strong>Date:</strong> {{ submittedData?.date }}</p>
+            <p><strong>Address:</strong> {{ submittedData?.address | camelcase }}</p>
+        </div>
+
+        }
+        @if (responseTodo) {
+        <h3>Department Details</h3>
+        <p><strong>ID:</strong> {{ responseTodo.id }}</p>
+        <p><strong>Title:</strong> {{ responseTodo.title }}</p>
+        <p><strong>Completed:</strong> {{ responseTodo.completed }}</p>
+
+        }
+        <!-- @for (emp of employees; track emp.id) {
+        <p>{{ emp.firstName }} {{ emp.lastName }}</p>
+        } -->
+        <!-- @for (emp of employees; track emp.id;
+        let i = $index;
+        let first = $first;
+        let last = $last;
+        let even = $even;
+        let odd = $odd) {
+        <p>
+
+            {{i}} -
+            {{emp.firstName}} {{emp.lastName}} -
+            First: {{first}} -
+            Last: {{last}} -
+            Even: {{even}}
+        </p>
+
+        } -->
+    </section>
+</main>
