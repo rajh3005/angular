@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { GreetingPipe } from './greeting.pipe';
 import { CamelCasePipe } from './camelcase.pipe';
 import { HighlightDirective } from './textHIglist.dir';
@@ -20,7 +21,7 @@ interface UserFormData {
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, FormsModule, GreetingPipe, CamelCasePipe, HighlightDirective, TextBoxColorDirective, CapitalizeDirective],
+  imports: [CommonModule, FormsModule, RouterLink, RouterLinkActive, RouterOutlet, GreetingPipe, CamelCasePipe, HighlightDirective, TextBoxColorDirective, CapitalizeDirective],
   templateUrl: './sample.html',
   styleUrl: './app.css'
 })

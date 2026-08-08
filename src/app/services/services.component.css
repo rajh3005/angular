@@ -1,0 +1,29 @@
+.page-card {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 20px;
+  background: #f8fafc;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+  text-align: center;
+}
+
+.page-card h1 {
+  color: #7c3aed;
+  margin-top: 0;
+}
+
+.page-card p {
+  color: #475569;
+  line-height: 1.6;
+}
+
+.action-link {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 999px;
+  background: #7c3aed;
+  color: #fff;
+  text-decoration: none;
+}

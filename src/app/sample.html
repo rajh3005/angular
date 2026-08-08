@@ -1,4 +1,11 @@
 <main class="customer-page">
+    <nav class="component-links">
+        <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+        <a routerLink="/about-us" routerLinkActive="active-link">About</a>
+        <a routerLink="/services" routerLinkActive="active-link">Services</a>
+        <a routerLink="/contact" routerLinkActive="active-link">Contact</a>
+    </nav>
+
     <section class="customer-card">
         <h1>{{ title }}</h1>
         <p [ngClass]="isActive ? 'active' : 'inactive'">
@@ -99,4 +106,6 @@
 
         } -->
     </section>
+    
+<router-outlet></router-outlet>
 </main>
