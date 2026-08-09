@@ -6,6 +6,8 @@
         <a routerLink="/contact" routerLinkActive="active-link">Contact</a>
     </nav>
 
+    <router-outlet></router-outlet>
+
     <section class="customer-card">
         <h1>{{ title }}</h1>
         <p [ngClass]="isActive ? 'active' : 'inactive'">
@@ -84,7 +86,17 @@
         <p><strong>ID:</strong> {{ responseTodo.id }}</p>
         <p><strong>Title:</strong> {{ responseTodo.title }}</p>
         <p><strong>Completed:</strong> {{ responseTodo.completed }}</p>
+        }
 
+        <h3>Employee List</h3>
+        @if (employees.length) {
+        <ul>
+            @for (employee of employees; track employee.id) {
+            <li><strong>{{ employee.name }}</strong> - {{ employee.email }}</li>
+            }
+        </ul>
+        } @else {
+        <p>Loading employees...</p>
         }
         <!-- @for (emp of employees; track emp.id) {
         <p>{{ emp.firstName }} {{ emp.lastName }}</p>
@@ -106,6 +118,4 @@
 
         } -->
     </section>
-    
-<router-outlet></router-outlet>
 </main>

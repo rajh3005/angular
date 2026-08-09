@@ -1,17 +1,22 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+export interface Employee {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+}
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
-
 export class EmployeeService {
-   employees: any[] = [
-    { id: 1, firstName: 'John', lastName: 'Prasad' },
-    { id: 2, firstName: 'Sam', lastName: 'Smith' },
-    { id: 3, firstName: 'David', lastName: 'Johnson' }
-  ];
+  private http = inject(HttpClient);
+  private apiUrl = 'https://jsonplaceholder.typicode.com/users';
 
-    getEmployees() {
-        return this.employees;
-    }
+  getEmployees(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(this.apiUrl);
+  }
 }

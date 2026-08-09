@@ -7,7 +7,7 @@ import { CamelCasePipe } from './camelcase.pipe';
 import { HighlightDirective } from './textHIglist.dir';
 import { TextBoxColorDirective } from './textbox-color.directive';
 import { CapitalizeDirective } from './capitalize.directive';
-import { EmployeeService } from './employee.service';
+import { Employee, EmployeeService } from './employee.service';
 import { Department, TodoService } from './department.service';
 
 interface UserFormData {
@@ -28,10 +28,13 @@ interface UserFormData {
 export class App {
   protected readonly title = 'Customer Details';
   isActive = true;
-  employees: any[] = [];
+  employees: Employee[] = [];
   responseTodo?: Department;
-  constructor( private employeeService: EmployeeService, private todoService: TodoService) {
-    this.employees = this.employeeService.getEmployees();   
+  constructor(private employeeService: EmployeeService, private todoService: TodoService) {
+    this.employeeService.getEmployees().subscribe((employees) => {
+      this.employees = employees;
+    });
+
     this.todoService.getTodo().subscribe((todo) => {
       this.responseTodo = todo;
     });
